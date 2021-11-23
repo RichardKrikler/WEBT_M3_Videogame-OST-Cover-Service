@@ -1,6 +1,6 @@
 <?php
 
-class Song implements JsonSerializable
+class Track implements JsonSerializable
 {
     private $id;
     private $name;

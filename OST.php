@@ -1,6 +1,6 @@
 <?php
 
-class Videogame implements JsonSerializable
+class OST implements JsonSerializable
 {
     private $id;
     private $name;
@@ -64,7 +64,7 @@ class Videogame implements JsonSerializable
         return $this->trackList;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->getId(),
@@ -74,7 +74,5 @@ class Videogame implements JsonSerializable
             'trackList' => $this->getTrackList()
         ];
     }
-
-
 }
 
