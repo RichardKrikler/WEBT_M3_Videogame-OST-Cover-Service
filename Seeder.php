@@ -4,7 +4,7 @@ require_once 'Track.php';
 
 class Seeder
 {
-    public $osts;
+    private $osts;
 
     /**
      * default Constructor
