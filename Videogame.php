@@ -1,6 +1,6 @@
 <?php
 
-class Videogame
+class Videogame implements JsonSerializable
 {
     private $id;
     private $name;
@@ -23,4 +23,58 @@ class Videogame
         $this->releaseYear = $releaseYear;
         $this->trackList = $trackList;
     }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGameName(): string
+    {
+        return $this->gameName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReleaseYear(): string
+    {
+        return $this->releaseYear;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTrackList(): array
+    {
+        return $this->trackList;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'gameName' => $this->getGameName(),
+            'releaseYear' => $this->getReleaseYear(),
+            'trackList' => $this->getTrackList()
+        ];
+    }
+
+
 }
+
