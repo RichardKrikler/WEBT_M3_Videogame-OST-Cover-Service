@@ -3,7 +3,7 @@
 class DB
 {
     // name of the service from docker-compose.yml -> "mysql"
-    private static string $SERVER = 'mysql';
+    private static string $SERVER = 'localhost:3306';
     private static string $DBNAME = 'OSTS';
     private static string $USERNAME = 'root';
     private static string $PASSWORD = 'cisco';
