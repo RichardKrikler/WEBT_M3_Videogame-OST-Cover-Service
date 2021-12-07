@@ -3,10 +3,9 @@ require_once 'Seeder.php';
 header('content-type:application/json');
 
 $osts = (new Seeder())->getOsts();
-$saveGET = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['id']);
 if (isset($_GET['id'])) {
     foreach ($osts as $ost) {
-        if ($ost->getId() == $saveGET) {
+        if ($ost->getId() == $_GET['id']) {
             echo json_encode($ost);
             return;
         }
