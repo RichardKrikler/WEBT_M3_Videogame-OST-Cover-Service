@@ -1,0 +1,2 @@
+#RewriteEngine on
+#RewriteRule ^ost/([0-9]+)/?$ getOST.php?id=$1 [NC]

@@ -70,7 +70,7 @@ class Track implements JsonSerializable
             'id' => $this->getId(),
             'name' => $this->getName(),
             'artist' => $this->getArtist(),
-            'tracknumber' => $this->getTrackNumber(),
+            'trackNumber' => $this->getTrackNumber(),
             'duration' => $this->getDuration()
         ];
     }

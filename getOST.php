@@ -1,15 +1,12 @@
 <?php
-require_once 'Seeder.php';
+
+require_once 'DB_OST.php';
 header('content-type:application/json');
 
-$osts = (new Seeder())->getOsts();
+
 if (isset($_GET['id'])) {
-    foreach ($osts as $ost) {
-        if ($ost->getId() == $_GET['id']) {
-            echo json_encode($ost);
-            return;
-        }
-    }
+    $ost = DB_OST::getOST($_GET['id']);
+    echo json_encode(!$ost ? [] : $ost);
 } else {
-    echo json_encode($osts);
+//    echo json_encode($osts);
 }
