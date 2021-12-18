@@ -11,7 +11,7 @@ class DB_OST
     static function getOST(int $id)
     {
         $DB = DB::getDB();
-        $ost = '';
+        $ost = [];
         try {
             $stmt = $DB->prepare('SELECT id, name, gameName, releaseYear FROM OST WHERE id = :id');
             $stmt->bindParam(":id", $id);
@@ -21,9 +21,10 @@ class DB_OST
                     $ost = new OST($row['id'], $row['name'], $row['gameName'], $row['releaseYear'], DB_Track::getTracks($row['id']));
                 }
             }
+
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            return $ost === '' ? false : $ost;
+            return $ost;
         } catch (PDOException  $e) {
             print('Error: ' . $e);
             exit();
@@ -33,18 +34,19 @@ class DB_OST
     static function getOSTs(): array
     {
         $DB = DB::getDB();
-        $ostAr = [];
+        $ost = [];
         try {
-            $stmt = $DB->prepare('SELECT id, name, gameName, releaseYear FROM OSTS');
+            $stmt = $DB->prepare('SELECT id, name, gameName, releaseYear FROM OST');
 
             if ($stmt->execute()) {
                 while ($row = $stmt->fetch()) {
-                    $ostAr[] = new OST($row['id'], $row['name'], $row['gameName'], $row['releaseYear']);
+                    $ost[] = new OST($row['id'], $row['name'], $row['gameName'], $row['releaseYear'], DB_Track::getTracks($row['id']));
                 }
             }
+
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            return $ostAr;
+            return $ost;
         } catch (PDOException  $e) {
             print('Error: ' . $e);
             exit();

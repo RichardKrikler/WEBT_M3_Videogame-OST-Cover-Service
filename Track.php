@@ -2,11 +2,11 @@
 
 class Track implements JsonSerializable
 {
-    private $id;
-    private $name;
-    private $artist;
-    private $trackNumber;
-    private $duration;
+    private int $id;
+    private string $name;
+    private string $artist;
+    private int $trackNumber;
+    private float $duration;
 
     /**
      * @param int $id
@@ -64,7 +64,7 @@ class Track implements JsonSerializable
         return $this->duration;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->getId(),

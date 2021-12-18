@@ -2,11 +2,11 @@
 
 class OST implements JsonSerializable
 {
-    private $id;
-    private $name;
-    private $gameName;
-    private $releaseYear;
-    private $trackList;
+    private int $id;
+    private string $name;
+    private string $gameName;
+    private string $releaseYear;
+    private array $trackList;
 
     /**
      * @param int $id

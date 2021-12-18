@@ -6,7 +6,7 @@ class DB
     private static string $SERVER = 'db';
     private static string $DBNAME = 'OSTS';
     private static string $USERNAME = 'root';
-    private static string $PASSWORD = 'cisco';
+    private static string $PASSWORD = '';
 
     /**
      * @return PDO

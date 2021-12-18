@@ -5,8 +5,7 @@ header('content-type:application/json');
 
 
 if (isset($_GET['id'])) {
-    $ost = DB_OST::getOST($_GET['id']);
-    echo json_encode(!$ost ? [] : $ost);
+    echo json_encode(DB_OST::getOST($_GET['id']));
 } else {
-//    echo json_encode($osts);
+    echo json_encode(DB_OST::getOSTs());
 }
