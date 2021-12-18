@@ -1,2 +1,3 @@
-#RewriteEngine on
-#RewriteRule ^ost/([0-9]+)/?$ getOST.php?id=$1 [NC]
+RewriteEngine on
+RewriteRule ^ost/?$ getOST.php [NC]
+RewriteRule ^ost/([0-9]+)/?$ getOST.php?id=$1 [NC]
