@@ -8,19 +8,18 @@ class DB_Track
     static function getTracks(int $ostId): array
     {
         $DB = DB::getDB();
-        $TrackAr = [];
         try {
             $stmt = $DB->prepare('SELECT id, name, artist, trackNumber, duration FROM Track WHERE fk_pk_ost_id = :ostId');
             $stmt->bindParam(":ostId", $ostId);
 
             if ($stmt->execute()) {
                 while ($row = $stmt->fetch()) {
-                    $TrackAr[] = new Track($row['id'], $row['name'], $row['artist'], $row['trackNumber'], $row['duration']);
+                    $trackAr[] = new Track($row['id'], $row['name'], $row['artist'], $row['trackNumber'], $row['duration']);
                 }
             }
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            return $TrackAr;
+            return $trackAr ?? [];
         } catch (PDOException  $e) {
             print('Error: ' . $e);
             exit();

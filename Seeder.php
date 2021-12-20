@@ -33,7 +33,9 @@ class Seeder
             new Track(10, 'Breath it Around', 'Richardo', 2, 4.00),
             new Track(11, 'Breath it over the Mountain', 'Richardo', 3, 6.23)
         ]);
+    }
 
+    public function insertIntoDB() {
         foreach ($this->getOsts() as $ost) {
             DB_OST::insertOST($ost->getId(), $ost->getName(), $ost->getGameName(), $ost->getReleaseYear());
             foreach ($ost->getTrackList() as $track) {
