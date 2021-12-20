@@ -14,9 +14,8 @@ class DB_Track
             $stmt->bindParam(":ostId", $ostId);
 
             if ($stmt->execute()) {
-                while ($row = $stmt->fetch()) {
-                    $TrackAr[] = new Track($row['id'], $row['name'], $row['artist'], $row['trackNumber'], $row['duration']);
-                }
+                $row = $stmt->fetch();
+                $TrackAr[] = new Track($row['id'], $row['name'], $row['artist'], $row['trackNumber'], $row['duration']);
             }
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

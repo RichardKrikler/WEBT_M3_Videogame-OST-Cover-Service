@@ -17,9 +17,8 @@ class DB_OST
             $stmt->bindParam(":id", $id);
 
             if ($stmt->execute()) {
-                while ($row = $stmt->fetch()) {
-                    $ost = new OST($row['id'], $row['name'], $row['gameName'], $row['releaseYear'], DB_Track::getTracks($row['id']));
-                }
+                $row = $stmt->fetch();
+                $ost = new OST($row['id'], $row['name'], $row['gameName'], $row['releaseYear'], DB_Track::getTracks($row['id']));
             }
 
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
